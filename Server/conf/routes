@@ -1,0 +1,7 @@
+
+GET     /directories        controllers.Directories.list()
+
+#GET     /tokens         controllers.Tokens.list()
+
+#GET     /occurrences    controllers.Occurrences.list()
+
