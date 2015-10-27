@@ -2,10 +2,10 @@ package controllers
 
 import play.api.mvc._
 
-class Directories
+class Files
     extends Controller
 {
-    def list = Action
+    def list( projectName : String ) = Action
     {
         Ok( "Success" )
     }
