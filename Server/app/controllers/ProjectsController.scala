@@ -4,12 +4,12 @@ import play.api.mvc._
 import play.api.libs.json.Json
 import models._
 
-class Projects
+class ProjectsController
     extends Controller
 {
 	val repository : ProjectRepository = DbProjectRepository
 
-    def list = Action
+    def list() = Action
     {
 		Ok( Json.toJson( repository.listProjects ) )
     }
@@ -23,9 +23,17 @@ class Projects
 		}
 	}
 
-	def create( name : String ) = Action
+	def create() = Action( parse.json )
 	{
-		Ok( "Success" )
+		request =>
+			val project = request.body.as[ Project ]
+			Ok( Json.toJson( repository.createProject( project ) ) )
+	}
+
+	def update() = Action( parse.json )
+	{
+		request =>
+			Ok( "foo" )
 	}
 }
 

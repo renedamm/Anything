@@ -2,7 +2,7 @@ package controllers
 
 import play.api.mvc._
 
-class Tokens
+class TokensController
 	extends Controller
 {
 	def listAll( projectName : String ) = Action

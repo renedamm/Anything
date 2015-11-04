@@ -1,11 +1,12 @@
 
-GET		/projects																	controllers.Projects.list()
-GET		/projects/:project															controllers.Projects.get( project : String )
-PUT		/projects/:project															controllers.Projects.create( project : String )
-GET		/projects/:project/files													controllers.Files.list( project : String )
-GET		/projects/:project/tokens													controllers.Tokens.listAll( project : String )
-GET		/projects/:project/tokens?match=$substr<[A-Za-z_][A-Za-z_0-9]+>				controllers.Tokens.listMatches( project : String, substr : String )
-GET		/projects/:project/tokens?match=$substr<[A-Za-z_][A-Za-z_0-9]+>/occurrences	controllers.Tokens.listOccurrences( project : String, substr : String )
+GET		/projects																	controllers.ProjectsController.list()
+PUT		/projects																	controllers.ProjectsController.create()
+POST	/projects																	controllers.ProjectsController.update()
+GET		/projects/:project															controllers.ProjectsController.get( project : String )
+GET		/projects/:project/files													controllers.FilesController.list( project : String )
+GET		/projects/:project/tokens													controllers.TokensController.listAll( project : String )
+GET		/projects/:project/tokens?match=$substr<[A-Za-z_][A-Za-z_0-9]+>				controllers.TokensController.listMatches( project : String, substr : String )
+GET		/projects/:project/tokens?match=$substr<[A-Za-z_][A-Za-z_0-9]+>/occurrences	controllers.TokensController.listOccurrences( project : String, substr : String )
 
 
 
