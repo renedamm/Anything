@@ -50,6 +50,13 @@ object DbProjectRepository
 {
 	def createProject( project : Project ) : Project =
 	{
+		DB.withConnection
+		{
+			implicit connection =>
+				SQL( s"INSERT INTO projects( name, path ) VALUES( '${project.name}', '${project.path}' );" )
+					.execute()
+		}
+		####TODO: return proper dbProject
 		project
 	}
 

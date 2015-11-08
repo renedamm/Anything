@@ -1,7 +1,7 @@
 
 GET		/projects																	controllers.ProjectsController.list()
-PUT		/projects																	controllers.ProjectsController.create()
-POST	/projects																	controllers.ProjectsController.update()
+POST	/projects																	controllers.ProjectsController.create()
+PUT		/projects																	controllers.ProjectsController.update()
 GET		/projects/:project															controllers.ProjectsController.get( project : String )
 GET		/projects/:project/files													controllers.FilesController.list( project : String )
 GET		/projects/:project/tokens													controllers.TokensController.listAll( project : String )
