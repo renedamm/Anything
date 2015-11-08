@@ -1,9 +1,14 @@
 package models
 
+import play.api.db._
 import play.api.libs.json._
 import play.api.libs.json.util._
 import play.api.libs.functional.syntax._
+import play.api.Play.current
+import anorm._
 
+// A project is identified by its name and associated with a path
+// on the local file system.
 class Project( val name : String, val path : String )
 
 object Project
@@ -60,6 +65,17 @@ object DbProjectRepository
 
 	def listProjects() : Seq[ Project ] =
 	{
-		Seq()
+		DB.withConnection
+		{
+			implicit connection =>
+				SQL( "SELECT * FROM projects" )().map {
+					row =>
+						new DbProject(
+							  id = row[ Long ]( "id" )
+							, name = row[ String ]( "name" )
+							, path = row[ String ]( "path" )
+						)
+				}
+		}.toSeq
 	}
 }

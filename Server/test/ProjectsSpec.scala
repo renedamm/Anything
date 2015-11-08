@@ -6,6 +6,8 @@ import play.api.test._
 import play.api.test.Helpers._
 import play.api.libs.json._
 
+////TODO: replace FakeRequest with RequestBuilder
+
 @RunWith( classOf[ JUnitRunner ] )
 class ProjectsSpec
     extends Specification
