@@ -34,7 +34,7 @@ class ProjectsSpec
 		"respond with new project when creating valid project" in new WithApplication
 		{
 			val Some( result ) = route(
-				FakeRequest( PUT, "/projects" )
+				FakeRequest( POST, "/projects" )
 					.withHeaders( "Content-Type" -> "application/json" )
 					.withBody( """{ "name" : "test", "path" : "D:/Unity/trunk" }""" )
 			)

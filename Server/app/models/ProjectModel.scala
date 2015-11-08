@@ -56,7 +56,7 @@ object DbProjectRepository
 				SQL( s"INSERT INTO projects( name, path ) VALUES( '${project.name}', '${project.path}' );" )
 					.execute()
 		}
-		####TODO: return proper dbProject
+		////TODO: return proper dbProject
 		project
 	}
 

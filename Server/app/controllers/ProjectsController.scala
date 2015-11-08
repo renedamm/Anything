@@ -33,7 +33,7 @@ class ProjectsController
 	def update() = Action( parse.json )
 	{
 		request =>
-			Ok( "foo" )
+			Ok( "NOT IMPLEMENTED" )
 	}
 }
 
