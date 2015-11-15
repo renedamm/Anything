@@ -46,24 +46,20 @@ class FileScannerSpec
 		{
 			val actor = TestActorRef[ FileScanner ]( Props( new FileScanner( testActor ) ) ).underlyingActor
 			var message = createScanMessage( "test" )
+			var file = message.file
 
 			actor.receive( message )
 
-			expectMsg(
-			{
-				msg : Any => msg match
-				{
-					case SetTokenOccurrencesForFile( file1,
-						Seq( TokenOccurrence(
-								  Token( "test" )
-								, TokenUsageTag.default
-								, file2
-								, 1
-								, 0
-								, 0) ) ) if file1 == file2 == message.file =>
-						true
-				}
-			} )
+			expectMsgPF() {
+				case msg : SetTokenOccurrencesForFile =>
+					msg.file should be( file )
+					msg.tokenOccurrences should have length( 1 )
+					msg.tokenOccurrences( 0 ).token should be( Token( "test" ) )
+					msg.tokenOccurrences( 0 ).file should be( file )
+					msg.tokenOccurrences( 0 ).line should be( 1 )
+					msg.tokenOccurrences( 0 ).column should be( 0 )
+					msg.tokenOccurrences( 0 ).position should be( 0 )
+			}
 		}
 
 		"ignore whitespace" in
