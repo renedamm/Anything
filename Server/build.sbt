@@ -12,7 +12,11 @@ libraryDependencies ++= Seq(
 	  jdbc
 	, evolutions
     , specs2 % Test
+	, "com.typesafe.akka" %% "akka-actor" % "2.3.13"
+	, "com.typesafe.akka" %% "akka-testkit" % "2.3.13"
 	, "com.typesafe.play" %% "anorm" % "2.4.0"
+	, "org.scalaz" %% "scalaz-core" % "7.1.5"
+	, "org.scalatest" %% "scalatest" % "2.2.4" % Test
 )
 
 
